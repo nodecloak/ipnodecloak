@@ -31,8 +31,10 @@ IP/DNS/STUN/speed/geolocation providers have their own availability and policies
 
 ## Homepage IP details
 
-Link previews use the existing 180×180 PNG thumbnail and a `summary` card,
-separate from the 512×512 install icon. Keep Open Graph dimensions consistent
+Link previews use the solid 180×180 share thumbnail and a `summary` card,
+separate from the rounded install icons. Its green background covers every pixel
+so clients cannot add a white matte to transparent corners. The SVG source and
+PNG share thumbnail live under `public/brand/`. Keep Open Graph dimensions consistent
 with the actual PNG. Preview layout and cached messages remain controlled by
 the messaging client; a site metadata change cannot force existing Telegram
 messages to refresh or override a sender-selected large preview.
