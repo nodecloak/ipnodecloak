@@ -31,6 +31,12 @@ IP/DNS/STUN/speed/geolocation providers have their own availability and policies
 
 ## Homepage IP details
 
+Link previews use the existing 180×180 PNG thumbnail and a `summary` card,
+separate from the 512×512 install icon. Keep Open Graph dimensions consistent
+with the actual PNG. Preview layout and cached messages remain controlled by
+the messaging client; a site metadata change cannot force existing Telegram
+messages to refresh or override a sender-selected large preview.
+
 The expanded homepage panel queries RIPEstat for the selected IP's BGP prefix and origin ASN, and IPWhois for network/domain/location metadata. The ASN's name uses the local CAIDA table where available. Other configured geolocation sources look up that same IP; Cloudflare trace is included only when its caller IP matches, and supplies country only. Metadata is cached by queried IP; incomplete responses have a shorter TTL. IP-API's explicit hosting/mobile/proxy flags are retained without inferring residential status from missing flags.
 
 IPinfo and IP2Location are available without credentials through their official keyless APIs. IPinfo uses its legacy `/json` endpoint with shared anonymous rate limits (https://support.ipinfo.io/hc/en-us/articles/34121895556242-Legacy-Free-API-vs-IPinfo-Lite); IP2Location permits 1,000 keyless queries per day, resetting at 00:00 UTC (https://www.ip2location.io/ip2location-documentation). Optional `IPINFO_API_KEY` (legacy alias `IPINFO_API_TOKEN`) and `IP2LOCATION_API_KEY` are used when configured. Upstream quota/errors remain unavailable; no substitute data is labelled as these providers. The `/api/configs` booleans indicate backend capability, not guaranteed provider uptime. MaxMind remains gated on loaded GeoLite2 City and ASN databases; `MAXMIND_ACCOUNT_ID` plus `MAXMIND_LICENSE_KEY` enable official downloads and daily updates. Its signup and license details are at https://dev.maxmind.com/geoip/geolite2-free-geolocation-data/.
